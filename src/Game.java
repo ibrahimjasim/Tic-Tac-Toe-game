@@ -7,7 +7,7 @@ public class Game {
         private final Player player2;
         private int p1Wins = 0; // Win counter for player 1
         private int p2Wins = 0; // Win counter for player 2
-        private Scanner scanner =  new Scanner(System.in);
+        private final Scanner scanner =  new Scanner(System.in);
 
     // Constructor to set up a new game
     public Game(Board board, Player player1, Player player2) {

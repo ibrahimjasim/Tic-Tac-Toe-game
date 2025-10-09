@@ -56,6 +56,15 @@ public class ComPlayer extends Player {
             }
         }
 
+        // STEP 3: Otherwise pick a random move
+        List<Move> emptyCells = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if(board.isCellEmpty(i, j)){
+                    emptyCells.add(new Move(i, j));
+                }
+            }
+        }
 
 
 

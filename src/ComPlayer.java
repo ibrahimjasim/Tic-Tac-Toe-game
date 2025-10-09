@@ -37,6 +37,28 @@ public class ComPlayer extends Player {
         }
 
 
+        // STEP 2: Try to block the opponent if they can win
+        char opponent = (symbol == 'X') ? 'O' : 'X';
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if(board.isCellEmpty(i, j)){
+                    board.placeSymbol(i, j, opponent);
+
+                    // If opponent would win, block here
+                    if (board.checkWin(opponent)) {
+                        board.placeSymbol(i, j, ' ');
+                        System.out.println(name + "(" +  symbol + ") blocks at: " + " " + (j+1));
+                        return new Move(i, j);
+
+                    }
+                    board.placeSymbol(i, j, ' ');
+                }
+            }
+        }
+
+
+
+
         // Pick one random move from the list
         Move move = emptyCells.get(random.nextInt(emptyCells.size()));
         System.out.println(name + "(" + symbol + ") choose: " + (move.row + 1) + " " + (move.col+1));

@@ -1,4 +1,4 @@
-public class Board {
+    public class Board {
     private final int size;
     private final char[][] grid;
     private static  final char EMPTY = ' ';
@@ -38,21 +38,44 @@ public class Board {
         return true;
     }
 
-    public boolean CheckWin(char symbol) {
+    // Checks if the given symbol has won
+    public boolean checkWin(char symbol) {
         // Check all rows
-        for (int i =0; i<size; i++){
+        for (int i = 0; i < size; i++) {
             boolean rowWin = true;
-            for (int j = 0; j<size; j++){
+            for (int j = 0; j < size; j++) {
                 if (grid[i][j] != symbol) rowWin = false;
             }
             if (rowWin) return true;
+        }
 
+        // Check all columns
+        for (int j = 0; j < size; j++) {
+            boolean colWin = true;
+            for (int i = 0; i < size; i++) {
+                if (grid[i][j] != symbol) colWin = false;
+            }
+            if (colWin) return true;
+        }
+
+        // Check main diagonal (top-left → bottom-right)
+        boolean diag1 = true;
+        for (int i = 0; i < size; i++) {
+            if (grid[i][i] != symbol) diag1 = false;
 
         }
+        if (diag1) return true;
+
+        //Check other diagonal (top-right → bottom-left)
+        boolean diag2= true;
+        for (int i = 0; i < size; i++) {
+            if (grid[i][size-1-i] != symbol) diag2 = false;
+        }
+        if (diag2) return true;
+
+
+
+
         return false;
     }
-
-
-
-
 }

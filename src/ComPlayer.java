@@ -11,19 +11,31 @@ public class ComPlayer extends Player {
         super(name, symbol);
     }
 
-    // Chooses a random empty cell on the board
+    // Decide where the Com will move
     @Override
     public Move getMove(Board board) {
-        List<Move> emptyCells = new ArrayList<>();
+        int size = board.getSize();
 
-        // Find all empty cells
-        for (int i = 0; i < board.getSize(); i++) {
-            for (int j = 0; j < board.getSize(); j++) {
+        // step 1: try to win if possible
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
                 if(board.isCellEmpty(i, j)){
-                    emptyCells.add(new Move(i, j));
+                    board.placeSymbol(i, j, symbol);
+
+
+                    // Check if this move would win the game
+                    if (board.checkWin(symbol)) {
+                        board.placeSymbol(i, j, ' ');
+                        System.out.println(name + "(" +  symbol + ") Plays to WIN" + " " + (j+1));
+                        return new Move(i, j);
+                    }
+
+                    // Undo the move if not a win
+                    board.placeSymbol(i, j, ' ');
                 }
             }
         }
+
 
         // Pick one random move from the list
         Move move = emptyCells.get(random.nextInt(emptyCells.size()));

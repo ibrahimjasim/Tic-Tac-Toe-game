@@ -74,7 +74,7 @@ tic-tac-toe-java/
 
 ## 🧩 Programming Concepts Demonstrated
 
-This project shows understanding of:
+What I used in this project
 
 ✅ Object-Oriented Programming (classes, inheritance, abstraction)
 
@@ -99,7 +99,7 @@ Add custom board sizes (4x4, 5x5)
 
 ## 👨‍💻 Author
 
-### Your Name Here : Ibrahim Jasim Alsalih 
+### Ibrahim Jasim Alsalih 
 📚 Student Project — Object-Oriented Programming in Java
 🕹️ “Learning Java one game at a time!”
 
